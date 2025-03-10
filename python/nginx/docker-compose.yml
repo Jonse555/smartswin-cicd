@@ -21,9 +21,7 @@ services:
       - "9009:80"
     networks:
       - app_network
-        #depends_on:
-        #- sw_primary
-
+      
 networks:
   app_network:
     driver: bridge

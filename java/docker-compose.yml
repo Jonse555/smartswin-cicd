@@ -1,0 +1,21 @@
+services:
+  java_primary:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: sw-java:latest
+    container_name: "sw-java-main"
+    volumes:
+      - /work/deploy/smartswin/java/logs:/app/logs
+      - /work/deploy/smartswin/java/uploads:/app/uploads
+    ports:
+      - "8088:8088"
+    environment:
+      TZ: "Asia/Singapore"
+    networks:
+      - java_network
+  
+networks:
+  java_network:
+    driver: bridge
+    enable_ipv6: false

@@ -1,0 +1,26 @@
+#version: '3.8'
+
+services:
+
+  sw_portal:
+    container_name: "sw-portal-v2"
+    build:
+      context: .
+    image: sw-web:latest
+    environment:
+      TZ: "Asia/Singapore"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - /work/deploy/smartswin/cert/trading.win_bundle.crt:/etc/cert/trading.win_bundle.crt:rw,mode=600
+      - /work/deploy/smartswin/cert/trading.win.key:/etc/cert/trading.win.key:rw,mode=600
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge
+    enable_ipv6: false
+

@@ -10,8 +10,6 @@ services:
       - "8009:80"
     networks:
       - java_network
-        #depends_on:
-        #- java_primary
 
 networks:
   java_network:

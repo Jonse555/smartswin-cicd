@@ -1,0 +1,36 @@
+#version: '3.8'
+
+services:
+  #redis:
+  #  image: redis:latest
+  #  container_name: "sw-redis"
+  #  ports:
+  #    - "13031:6379"
+  #  command: redis-server --requirepass 1q2w3e
+  #  environment:
+  #    TZ: "Asia/Singapore"
+
+  sw_primary:
+    container_name: "sw-py-main"
+    build:
+      context: .
+      args:
+        ENV: "prod"
+    image: sw-py-server:latest
+      #command: ["python", "main.py", "prod"]
+    environment:
+      TZ: "Asia/Singapore"
+      STAGE: "prod"
+    ports:
+      - "9002:9002"
+    volumes:
+      - /work/deploy/smartswin/python/main/logs:/app/logs
+      - /work/deploy/smartswin/python/main/data:/app/data
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge
+    enable_ipv6: false
+

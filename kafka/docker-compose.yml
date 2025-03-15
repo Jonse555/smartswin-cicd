@@ -1,0 +1,18 @@
+services:
+
+  kafka-ui:
+    container_name: kafka-ui
+    image: provectuslabs/kafka-ui:latest
+    ports:
+      - 14005:8080
+    environment:
+      #KAFKA_CLUSTERS_0_NAME: sw-kafka
+      #KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: 45.77.247.55:14005,3.0.48.52:14007,47.128.146.172:7107
+      #KAFKA_CLUSTERS_0_PROPERTIES_SECURITY_PROTOCOL: SASL_PLAINTEXT
+      #KAFKA_CLUSTERS_0_PROPERTIES_SASL_MECHANISM: PLAIN
+      #KAFKA_CLUSTERS_0_PROPERTIES_SASL_JAAS_CONFIG: 'org.apache.kafka.common.security.plain.PlainLoginModule required username="trader" password="trading$win";'
+      DYNAMIC_CONFIG_ENABLED: 'true'
+      AUTH_TYPE: "LOGIN_FORM"
+      SPRING_SECURITY_USER_NAME: admin
+      SPRING_SECURITY_USER_PASSWORD: 1q2w3e4r$
+

@@ -14,3 +14,7 @@ mysqldump -h47.128.146.172 -P14001 -u"root" -p"sWin@o12" \
         --complete-insert \
         "trading-win" >> $BACKUP_FILE
 echo "[$(date '+%Y-%m-%d %H:%M:%S')] 备份成功: $BACKUP_FILE" >> "$LOG_FILE"
+
+# mysqldump -h47.128.146.172 -P14001 -u"root" -p"sWin@o12" --opt --routines --triggers --hex-blob "$db" | gzip > "${BACKUP_FILE}.gz"
+
+# */30 * * * * /work/mysql/backup/tradingwin_prod_backup.sh
